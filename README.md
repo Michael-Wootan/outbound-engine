@@ -101,6 +101,8 @@ npm run warmup                                               # start the 21-day 
 
 In GitHub Actions, put keys and passwords in repository **secrets**. The workflow writes `config/company.json` and `config/segments.json` from the repository **variables** `COMPANY_JSON` and `SEGMENTS_JSON`, so real targeting never has to be committed.
 
+Scheduled runs are off by default. Set the repository variable `ENABLE_SCHEDULE` to `true` to turn the schedule on; manual runs from the Actions tab always work.
+
 ---
 
 Extracted from a production automation suite I built and ran for a live e-commerce and B2B wholesale business, 2026.

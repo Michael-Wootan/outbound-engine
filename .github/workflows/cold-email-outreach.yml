@@ -17,6 +17,9 @@ on:
 
 jobs:
   run:
+    # Scheduled runs are off until the repository variable ENABLE_SCHEDULE is 'true',
+    # so a fresh fork or an unconfigured copy never runs (or fails) on its own.
+    if: github.event_name == 'workflow_dispatch' || vars.ENABLE_SCHEDULE == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
