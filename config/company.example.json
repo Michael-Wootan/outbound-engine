@@ -1,0 +1,16 @@
+{
+  "name": "Acme Supply Co.",
+  "description": "a US-based wholesale supplier of specialty food ingredients",
+  "audience": "a potential B2B buyer",
+  "offers": [
+    "Bulk ingredients, concentrates and finished goods",
+    "Batch documentation with every shipment",
+    "Wholesale pricing for international buyers"
+  ],
+  "cta": "ask if they'd like to see the catalog or pricing",
+  "senderName": "Alex Morgan",
+  "signature": "Alex Morgan, Acme Supply Co.",
+  "defaultRegion": "Europe",
+  "bannedWords": [],
+  "internalDomains": ["acmesupply.example"]
+}

@@ -1,0 +1,18 @@
+{
+  "segments": [
+    { "label": "Ingredients Germany",      "q_keywords": "food ingredients Germany" },
+    { "label": "Distributors Germany",     "q_keywords": "ingredient distributor Germany" },
+    { "label": "Ingredients Netherlands",  "q_keywords": "food ingredients Netherlands" },
+    { "label": "Ingredients UK",           "q_keywords": "food ingredients United Kingdom" },
+    { "label": "Ingredients France",       "q_keywords": "food ingredients France" },
+    { "label": "Distributors Spain",       "q_keywords": "ingredient distributor Spain" },
+    { "label": "Wholesale Europe",         "q_keywords": "ingredient wholesale Europe" }
+  ],
+  "titleKeywords": [
+    "buyer", "purchasing", "procurement", "supply chain", "sourcing",
+    "import", "export", "trade", "distributor", "distribution", "wholesale",
+    "ceo", "founder", "owner", "managing director", "director", "manager",
+    "head of", "operations", "business development", "sales", "merchandis",
+    "category", "e-commerce", "ecommerce", "product", "formulation", "r&d"
+  ]
+}

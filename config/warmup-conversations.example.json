@@ -1,0 +1,12 @@
+[
+  { "subject": "Quick question about the shipment", "outgoing": "Hey, just wanted to check: did the last batch of samples arrive okay? Let me know if you need anything else from our end.", "reply": "Yes, got them yesterday! Everything looks good. Thanks for checking in." },
+  { "subject": "Updated pricing sheet", "outgoing": "Hi there, I just sent over the updated Q2 pricing. Take a look when you get a chance and let me know your thoughts.", "reply": "Thanks for sending this over. I'll review it this week and get back to you." },
+  { "subject": "Meeting follow-up", "outgoing": "Great talking with you earlier. I'll put together the wholesale catalog you asked about and send it over by Friday.", "reply": "Sounds great, looking forward to it! Talk soon." },
+  { "subject": "Trade show next month", "outgoing": "Are you planning to attend the expo next month? We'll have a booth there and it would be great to connect in person.", "reply": "I'll be there! Let's definitely meet up. What day works best?" },
+  { "subject": "Invoice question", "outgoing": "Just wanted to confirm: did you receive the invoice I sent last week? I want to make sure our records are aligned.", "reply": "Yes, got it. Payment will go out this Friday as usual." },
+  { "subject": "Shipping update", "outgoing": "Quick heads up: your order shipped this morning. Tracking number is in the system. Should arrive by Thursday.", "reply": "Awesome, thanks for the heads up! Really appreciate the fast turnaround." },
+  { "subject": "Quarterly review", "outgoing": "Time for our quarterly review! I put together some numbers on our volume over the past 3 months. Let me know when you're free to discuss.", "reply": "How about next Tuesday at 2pm? I'll have my team join as well." },
+  { "subject": "Order confirmation", "outgoing": "Confirming your order for 50 units. We'll have it ready for pickup by next Monday.", "reply": "Confirmed, thanks! We'll arrange pickup on Monday morning." },
+  { "subject": "Packaging options", "outgoing": "We're considering some new packaging options for our wholesale line. Would you prefer bulk bags or individually sealed units?", "reply": "Individually sealed would be ideal for our retail partners. Good call on updating the packaging." },
+  { "subject": "Document request", "outgoing": "Could you send me the updated import paperwork when you have a chance? I want to make sure we have everything filed before the next shipment.", "reply": "Sure thing, I'll have it over to you by end of day tomorrow." }
+]

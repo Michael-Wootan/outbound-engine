@@ -1,0 +1,83 @@
+name: Cold Email Outreach
+
+on:
+  schedule:
+    - cron: '0 13 * * 1-5'   # weekdays, 13:00 UTC
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (preview only, no emails sent)'
+        required: false
+        default: 'false'
+        type: boolean
+      limit:
+        description: 'Number of emails to send (default 20)'
+        required: false
+        default: '20'
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      # config/*.json is gitignored; CI writes it from repository variables.
+      # Without them the committed *.example.json files are used.
+      - name: Write company and segment config
+        env:
+          COMPANY_JSON:  ${{ vars.COMPANY_JSON }}
+          SEGMENTS_JSON: ${{ vars.SEGMENTS_JSON }}
+        run: |
+          if [ -n "$COMPANY_JSON" ];  then printf '%s' "$COMPANY_JSON"  > config/company.json;  fi
+          if [ -n "$SEGMENTS_JSON" ]; then printf '%s' "$SEGMENTS_JSON" > config/segments.json; fi
+
+      # Restore outreach log and leads cache from previous runs
+      - name: Restore outreach state
+        uses: actions/cache@v4
+        with:
+          path: |
+            state/cold-outreach-log.json
+            state/cold-outreach-leads-cache.json
+          key: cold-outreach-state-${{ github.run_number }}
+          restore-keys: |
+            cold-outreach-state-
+
+      - name: Run cold email outreach
+        run: |
+          FLAGS=""
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            FLAGS="--dry-run"
+          fi
+          if [ -n "${{ github.event.inputs.limit }}" ] && [ "${{ github.event.inputs.limit }}" != "20" ]; then
+            FLAGS="$FLAGS --limit=${{ github.event.inputs.limit }}"
+          fi
+          node src/cold-email-outreach.js $FLAGS
+        env:
+          APOLLO_API_KEY:      ${{ secrets.APOLLO_API_KEY }}
+          ANTHROPIC_API_KEY:   ${{ secrets.ANTHROPIC_API_KEY }}
+          OUTREACH_SMTP_HOST:  ${{ secrets.OUTREACH_SMTP_HOST }}
+          OUTREACH_SMTP_PORT:  ${{ secrets.OUTREACH_SMTP_PORT }}
+          OUTREACH_SMTP_USER:  ${{ secrets.OUTREACH_SMTP_USER }}
+          OUTREACH_SMTP_PASS:  ${{ secrets.OUTREACH_SMTP_PASS }}
+          OUTREACH_FROM_EMAIL: ${{ secrets.OUTREACH_FROM_EMAIL }}
+          GMAIL_USER:          ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD:  ${{ secrets.GMAIL_APP_PASSWORD }}
+          EMAIL_NOTIFY:        ${{ secrets.EMAIL_NOTIFY }}
+          SENDER_NAME:         ${{ vars.SENDER_NAME }}
+
+      # Save state for next run (contacted list, leads cache, search position)
+      - name: Save outreach state
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: |
+            state/cold-outreach-log.json
+            state/cold-outreach-leads-cache.json
+          key: cold-outreach-state-${{ github.run_number }}

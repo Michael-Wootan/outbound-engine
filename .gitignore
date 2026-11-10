@@ -1,0 +1,11 @@
+node_modules/
+.env
+.env.*
+!.env.example
+state/
+config/company.json
+config/segments.json
+config/warmup-conversations.json
+*.csv
+*.log
+.DS_Store

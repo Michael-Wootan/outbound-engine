@@ -1,0 +1,21 @@
+{
+  "name": "outbound-engine",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Daily cold outbound: Apollo search and credit-capped email reveal, Claude-personalized copy, staggered sends, dedupe, dry-run mode and a 21-day domain warmup ramp.",
+  "main": "src/cold-email-outreach.js",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "outreach": "node src/cold-email-outreach.js",
+    "dry-run": "node src/cold-email-outreach.js --dry-run",
+    "preload": "node src/preload-apollo-leads.js",
+    "import": "node src/import-apollo-csv.js",
+    "warmup": "node src/email-warmup.js",
+    "warmup:status": "node src/email-warmup.js --status"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.80.0",
+    "dotenv": "^17.3.1",
+    "nodemailer": "^8.0.11"
+  }
+}
